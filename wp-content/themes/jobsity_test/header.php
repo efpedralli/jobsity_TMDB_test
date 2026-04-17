@@ -14,9 +14,9 @@
 		<p class="site-title">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 		</p>
-		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary', 'eduardo' ); ?>">
-			<a href="<?php echo esc_url( get_post_type_archive_link( 'movie' ) ); ?>"><?php esc_html_e( 'Movies', 'eduardo' ); ?></a>
-			<a href="<?php echo esc_url( get_post_type_archive_link( 'actor' ) ); ?>"><?php esc_html_e( 'Actors', 'eduardo' ); ?></a>
+		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary', '' ); ?>">
+			<a href="<?php echo esc_url( get_post_type_archive_link( 'movie' ) ); ?>"><?php esc_html_e( 'Movies', '' ); ?></a>
+			<a href="<?php echo esc_url( get_post_type_archive_link( 'actor' ) ); ?>"><?php esc_html_e( 'Actors', '' ); ?></a>
 		</nav>
 	</div>
 </header>

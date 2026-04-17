@@ -92,27 +92,27 @@ $genre_terms = get_terms(
 
 <section class="archive archive--movies">
 	<header class="archive__header">
-		<h1 class="archive__title"><?php esc_html_e( 'Movies', 'eduardo' ); ?></h1>
+		<h1 class="archive__title"><?php esc_html_e( 'Movies', '' ); ?></h1>
 	</header>
 
 	<form class="filters filters--movies" method="get" action="<?php echo esc_url( get_post_type_archive_link( 'movie' ) ); ?>">
 		<div class="filters__row">
 			<label class="filters__field">
-				<span class="filters__label"><?php esc_html_e( 'Title', 'eduardo' ); ?></span>
-				<input type="search" name="filter_title" value="<?php echo esc_attr( $filter_title ); ?>" placeholder="<?php esc_attr_e( 'Filter by title…', 'eduardo' ); ?>">
+				<span class="filters__label"><?php esc_html_e( 'Title', '' ); ?></span>
+				<input type="search" name="filter_title" value="<?php echo esc_attr( $filter_title ); ?>" placeholder="<?php esc_attr_e( 'Filter by title…', '' ); ?>">
 			</label>
 			<label class="filters__field">
-				<span class="filters__label"><?php esc_html_e( 'Name (alternative titles)', 'eduardo' ); ?></span>
-				<input type="search" name="filter_name" value="<?php echo esc_attr( $filter_name ); ?>" placeholder="<?php esc_attr_e( 'Alternative title…', 'eduardo' ); ?>">
+				<span class="filters__label"><?php esc_html_e( 'Name (alternative titles)', '' ); ?></span>
+				<input type="search" name="filter_name" value="<?php echo esc_attr( $filter_name ); ?>" placeholder="<?php esc_attr_e( 'Alternative title…', '' ); ?>">
 			</label>
 			<label class="filters__field">
-				<span class="filters__label"><?php esc_html_e( 'Year', 'eduardo' ); ?></span>
-				<input type="number" name="filter_year" value="<?php echo $filter_year ? esc_attr( (string) $filter_year ) : ''; ?>" min="1900" max="2100" placeholder="<?php esc_attr_e( 'e.g. 2024', 'eduardo' ); ?>">
+				<span class="filters__label"><?php esc_html_e( 'Year', '' ); ?></span>
+				<input type="number" name="filter_year" value="<?php echo $filter_year ? esc_attr( (string) $filter_year ) : ''; ?>" min="1900" max="2100" placeholder="<?php esc_attr_e( 'e.g. 2024', '' ); ?>">
 			</label>
 			<label class="filters__field">
-				<span class="filters__label"><?php esc_html_e( 'Genre', 'eduardo' ); ?></span>
+				<span class="filters__label"><?php esc_html_e( 'Genre', '' ); ?></span>
 				<select name="filter_genre">
-					<option value=""><?php esc_html_e( 'All genres', 'eduardo' ); ?></option>
+					<option value=""><?php esc_html_e( 'All genres', '' ); ?></option>
 					<?php if ( ! is_wp_error( $genre_terms ) && ! empty( $genre_terms ) ) : ?>
 						<?php foreach ( $genre_terms as $term ) : ?>
 							<option value="<?php echo esc_attr( (string) $term->term_id ); ?>" <?php selected( $filter_genre, (int) $term->term_id ); ?>>
@@ -123,7 +123,7 @@ $genre_terms = get_terms(
 				</select>
 			</label>
 			<div class="filters__actions">
-				<button type="submit" class="button"><?php esc_html_e( 'Apply filters', 'eduardo' ); ?></button>
+				<button type="submit" class="button"><?php esc_html_e( 'Apply filters', '' ); ?></button>
 			</div>
 		</div>
 	</form>
@@ -160,7 +160,7 @@ $genre_terms = get_terms(
 			<?php endwhile; ?>
 		</ul>
 
-		<nav class="pagination" aria-label="<?php esc_attr_e( 'Movies pagination', 'eduardo' ); ?>">
+		<nav class="pagination" aria-label="<?php esc_attr_e( 'Movies pagination', '' ); ?>">
 			<?php
 			echo wp_kses_post(
 				paginate_links(
@@ -183,7 +183,7 @@ $genre_terms = get_terms(
 		</nav>
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
-		<p class="empty-state"><?php esc_html_e( 'No movies found.', 'eduardo' ); ?></p>
+		<p class="empty-state"><?php esc_html_e( 'No movies found.', '' ); ?></p>
 	<?php endif; ?>
 </section>
 

@@ -63,7 +63,7 @@ while ( have_posts() ) :
 			<div class="single__heading">
 				<h1 class="single__title"><?php the_title(); ?></h1>
 				<?php if ( '' !== (string) $popularity ) : ?>
-					<p class="single__popularity"><?php esc_html_e( 'Popularity', 'eduardo' ); ?>: <?php echo esc_html( (string) $popularity ); ?></p>
+					<p class="single__popularity"><?php esc_html_e( 'Popularity', '' ); ?>: <?php echo esc_html( (string) $popularity ); ?></p>
 				<?php endif; ?>
 			</div>
 		</header>
@@ -71,32 +71,32 @@ while ( have_posts() ) :
 		<dl class="meta-list meta-list--inline">
 			<?php if ( is_string( $birthday ) && '' !== $birthday ) : ?>
 				<div class="meta-list__row">
-					<dt><?php esc_html_e( 'Birthday', 'eduardo' ); ?></dt>
+					<dt><?php esc_html_e( 'Birthday', '' ); ?></dt>
 					<dd><?php echo esc_html( $birthday ); ?></dd>
 				</div>
 			<?php endif; ?>
 			<?php if ( is_string( $pob ) && '' !== $pob ) : ?>
 				<div class="meta-list__row">
-					<dt><?php esc_html_e( 'Place of birth', 'eduardo' ); ?></dt>
+					<dt><?php esc_html_e( 'Place of birth', '' ); ?></dt>
 					<dd><?php echo esc_html( $pob ); ?></dd>
 				</div>
 			<?php endif; ?>
 			<?php if ( is_string( $deathday ) && '' !== $deathday ) : ?>
 				<div class="meta-list__row">
-					<dt><?php esc_html_e( 'Day of death', 'eduardo' ); ?></dt>
+					<dt><?php esc_html_e( 'Day of death', '' ); ?></dt>
 					<dd><?php echo esc_html( $deathday ); ?></dd>
 				</div>
 			<?php endif; ?>
 			<?php if ( is_string( $website ) && '' !== $website ) : ?>
 				<div class="meta-list__row">
-					<dt><?php esc_html_e( 'Website', 'eduardo' ); ?></dt>
+					<dt><?php esc_html_e( 'Website', '' ); ?></dt>
 					<dd><a href="<?php echo esc_url( $website ); ?>" rel="noopener noreferrer" target="_blank"><?php echo esc_html( $website ); ?></a></dd>
 				</div>
 			<?php endif; ?>
 		</dl>
 
 		<section class="block">
-			<h2 class="block__title"><?php esc_html_e( 'Bio', 'eduardo' ); ?></h2>
+			<h2 class="block__title"><?php esc_html_e( 'Bio', '' ); ?></h2>
 			<div class="block__content prose">
 				<?php
 				if ( '' !== trim( (string) $body ) ) {
@@ -110,7 +110,7 @@ while ( have_posts() ) :
 
 		<?php if ( ! empty( $gallery ) ) : ?>
 			<section class="block">
-				<h2 class="block__title"><?php esc_html_e( 'Gallery', 'eduardo' ); ?></h2>
+				<h2 class="block__title"><?php esc_html_e( 'Gallery', '' ); ?></h2>
 				<ul class="gallery-grid">
 					<?php foreach ( $gallery as $gurl ) : ?>
 						<li class="gallery-grid__item">
@@ -125,7 +125,7 @@ while ( have_posts() ) :
 
 		<?php if ( ! empty( $film_rows ) ) : ?>
 			<section class="block">
-				<h2 class="block__title"><?php esc_html_e( 'Movies', 'eduardo' ); ?></h2>
+				<h2 class="block__title"><?php esc_html_e( 'Movies', '' ); ?></h2>
 				<ul class="filmography">
 					<?php foreach ( $film_rows as $row ) : ?>
 						<?php

@@ -35,7 +35,7 @@ if ( $upcoming_query->have_posts() ) {
 		$upcoming_query->the_post();
 		$rd = get_post_meta( get_the_ID(), 'release_date', true );
 		if ( ! is_string( $rd ) || '' === $rd ) {
-			$label = __( 'Date TBD', 'eduardo' );
+			$label = __( 'Date TBD', '' );
 		} else {
 			$ts = strtotime( $rd . ' UTC' );
 			if ( false === $ts ) {
@@ -67,7 +67,7 @@ $actors_query = new WP_Query(
 
 <div class="home">
 	<section class="home__section">
-		<h1 class="home__heading"><?php esc_html_e( 'Upcoming movies', 'eduardo' ); ?></h1>
+		<h1 class="home__heading"><?php esc_html_e( 'Upcoming movies', '' ); ?></h1>
 
 		<?php if ( ! empty( $grouped_movies ) ) : ?>
 			<?php foreach ( $grouped_movies as $month_label => $posts ) : ?>
@@ -106,12 +106,12 @@ $actors_query = new WP_Query(
 				</section>
 			<?php endforeach; ?>
 		<?php else : ?>
-			<p class="empty-state"><?php esc_html_e( 'No upcoming movies found.', 'eduardo' ); ?></p>
+			<p class="empty-state"><?php esc_html_e( 'No upcoming movies found.', '' ); ?></p>
 		<?php endif; ?>
 	</section>
 
 	<section class="home__section">
-		<h2 class="home__heading"><?php esc_html_e( 'Popular actors', 'eduardo' ); ?></h2>
+		<h2 class="home__heading"><?php esc_html_e( 'Popular actors', '' ); ?></h2>
 
 		<?php if ( $actors_query->have_posts() ) : ?>
 			<ul class="card-grid card-grid--actors">
@@ -136,7 +136,7 @@ $actors_query = new WP_Query(
 			</ul>
 			<?php wp_reset_postdata(); ?>
 		<?php else : ?>
-			<p class="empty-state"><?php esc_html_e( 'No actors found.', 'eduardo' ); ?></p>
+			<p class="empty-state"><?php esc_html_e( 'No actors found.', '' ); ?></p>
 		<?php endif; ?>
 	</section>
 </div>

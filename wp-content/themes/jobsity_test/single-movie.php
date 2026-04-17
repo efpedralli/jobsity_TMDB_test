@@ -46,7 +46,7 @@ while ( have_posts() ) :
 		<header class="single__header">
 			<h1 class="single__title"><?php the_title(); ?></h1>
 			<?php if ( '' !== (string) $popularity ) : ?>
-				<p class="single__popularity"><?php esc_html_e( 'Popularity', 'eduardo' ); ?>: <?php echo esc_html( (string) $popularity ); ?></p>
+				<p class="single__popularity"><?php esc_html_e( 'Popularity', '' ); ?>: <?php echo esc_html( (string) $popularity ); ?></p>
 			<?php endif; ?>
 		</header>
 
@@ -56,18 +56,18 @@ while ( have_posts() ) :
 					<div class="embed embed--trailer">
 						<iframe
 							src="<?php echo esc_url( $embed ); ?>"
-							title="<?php echo esc_attr( get_the_title() . ' — ' . __( 'Trailer', 'eduardo' ) ); ?>"
+							title="<?php echo esc_attr( get_the_title() . ' — ' . __( 'Trailer', '' ) ); ?>"
 							loading="lazy"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							allowfullscreen
 						></iframe>
 					</div>
 				<?php elseif ( is_string( $trailer_url ) && '' !== $trailer_url ) : ?>
-					<p class="single__trailer-link"><a href="<?php echo esc_url( $trailer_url ); ?>"><?php esc_html_e( 'Watch trailer', 'eduardo' ); ?></a></p>
+					<p class="single__trailer-link"><a href="<?php echo esc_url( $trailer_url ); ?>"><?php esc_html_e( 'Watch trailer', '' ); ?></a></p>
 				<?php endif; ?>
 
 				<section class="block">
-					<h2 class="block__title"><?php esc_html_e( 'Overview', 'eduardo' ); ?></h2>
+					<h2 class="block__title"><?php esc_html_e( 'Overview', '' ); ?></h2>
 					<div class="block__content prose">
 						<?php
 						if ( '' !== trim( (string) $body ) ) {
@@ -81,7 +81,7 @@ while ( have_posts() ) :
 
 				<?php if ( ! empty( $reviews ) ) : ?>
 					<section class="block">
-						<h2 class="block__title"><?php esc_html_e( 'Reviews', 'eduardo' ); ?></h2>
+						<h2 class="block__title"><?php esc_html_e( 'Reviews', '' ); ?></h2>
 						<ul class="review-list">
 							<?php foreach ( $reviews as $rev ) : ?>
 								<?php
@@ -106,7 +106,7 @@ while ( have_posts() ) :
 
 				<?php if ( ! empty( $similar ) ) : ?>
 					<section class="block">
-						<h2 class="block__title"><?php esc_html_e( 'Similar movies', 'eduardo' ); ?></h2>
+						<h2 class="block__title"><?php esc_html_e( 'Similar movies', '' ); ?></h2>
 						<ul class="card-grid card-grid--compact">
 							<?php foreach ( $similar as $item ) : ?>
 								<?php
@@ -160,31 +160,31 @@ while ( have_posts() ) :
 				<dl class="meta-list">
 					<?php if ( $genres_str ) : ?>
 						<div class="meta-list__row">
-							<dt><?php esc_html_e( 'Genre', 'eduardo' ); ?></dt>
+							<dt><?php esc_html_e( 'Genre', '' ); ?></dt>
 							<dd><?php echo esc_html( $genres_str ); ?></dd>
 						</div>
 					<?php endif; ?>
 					<?php if ( ! empty( $alt_titles ) ) : ?>
 						<div class="meta-list__row">
-							<dt><?php esc_html_e( 'Alternative titles', 'eduardo' ); ?></dt>
+							<dt><?php esc_html_e( 'Alternative titles', '' ); ?></dt>
 							<dd><?php echo esc_html( implode( ', ', array_map( 'strval', $alt_titles ) ) ); ?></dd>
 						</div>
 					<?php endif; ?>
 					<?php if ( is_string( $release_date ) && '' !== $release_date ) : ?>
 						<div class="meta-list__row">
-							<dt><?php esc_html_e( 'Release date', 'eduardo' ); ?></dt>
+							<dt><?php esc_html_e( 'Release date', '' ); ?></dt>
 							<dd><?php echo esc_html( $release_date ); ?></dd>
 						</div>
 					<?php endif; ?>
 					<?php if ( is_string( $original_language ) && '' !== $original_language ) : ?>
 						<div class="meta-list__row">
-							<dt><?php esc_html_e( 'Original language', 'eduardo' ); ?></dt>
+							<dt><?php esc_html_e( 'Original language', '' ); ?></dt>
 							<dd><?php echo esc_html( strtoupper( $original_language ) ); ?></dd>
 						</div>
 					<?php endif; ?>
 					<?php if ( ! empty( $production ) ) : ?>
 						<div class="meta-list__row">
-							<dt><?php esc_html_e( 'Production companies', 'eduardo' ); ?></dt>
+							<dt><?php esc_html_e( 'Production companies', '' ); ?></dt>
 							<dd><?php echo esc_html( implode( ', ', array_map( 'strval', $production ) ) ); ?></dd>
 						</div>
 					<?php endif; ?>
@@ -194,7 +194,7 @@ while ( have_posts() ) :
 
 		<?php if ( ! empty( $actor_ids ) ) : ?>
 			<section class="block block--cast">
-				<h2 class="block__title"><?php esc_html_e( 'Cast', 'eduardo' ); ?></h2>
+				<h2 class="block__title"><?php esc_html_e( 'Cast', '' ); ?></h2>
 				<ul class="cast-list">
 					<?php foreach ( $actor_ids as $aid ) : ?>
 						<?php
