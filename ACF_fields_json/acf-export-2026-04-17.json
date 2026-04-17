@@ -1,0 +1,221 @@
+[
+    {
+        "key": "group_69e0e43ff3f22",
+        "title": "Actor Fields",
+        "fields": [
+            {
+                "key": "field_69e0e4400051d",
+                "label": "tmdb_id",
+                "name": "tmdb_id",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_69e0e4480051e",
+                "label": "photo_url",
+                "name": "photo_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_69e0e4530051f",
+                "label": "popularity",
+                "name": "popularity",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "step": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "actor"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "group_69e0e3d1d7068",
+        "title": "Movie Fields",
+        "fields": [
+            {
+                "key": "field_69e0e3d2b7827",
+                "label": "tmdb_id",
+                "name": "tmdb_id",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_69e0e3e0b7828",
+                "label": "poster_url",
+                "name": "poster_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_69e0e3f8b7829",
+                "label": "release_date",
+                "name": "release_date",
+                "aria-label": "",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "d\/m\/Y",
+                "return_format": "d\/m\/Y",
+                "first_day": 1,
+                "default_to_current_date": 0,
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_69e0e413b782a",
+                "label": "overview",
+                "name": "overview",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_69e0e41ab782b",
+                "label": "popularity",
+                "name": "popularity",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "step": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "movie"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    }
+]
