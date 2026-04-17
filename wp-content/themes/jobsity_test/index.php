@@ -82,24 +82,39 @@ $actors_query = new WP_Query(
 							$poster = jobsity_movie_poster_url( $p->ID );
 							$rd     = get_post_meta( $p->ID, 'release_date', true );
 							$genres = jobsity_movie_genres_string( $p->ID );
+							$in_wl  = is_user_logged_in() ? jobsity_is_movie_in_wishlist( $p->ID ) : false;
 							?>
 							<li class="card card--movie">
-								<a class="card__link" href="<?php echo esc_url( get_permalink( $p ) ); ?>">
-									<?php if ( $poster ) : ?>
-										<img class="card__image" src="<?php echo esc_url( $poster ); ?>" alt="" loading="lazy" width="300" height="450">
-									<?php else : ?>
-										<div class="card__placeholder" aria-hidden="true"></div>
-									<?php endif; ?>
+								<div class="card__link card__link--static">
+									<a class="card__media" href="<?php echo esc_url( get_permalink( $p ) ); ?>">
+										<?php if ( $poster ) : ?>
+											<img class="card__image" src="<?php echo esc_url( $poster ); ?>" alt="" loading="lazy" width="300" height="450">
+										<?php else : ?>
+											<div class="card__placeholder" aria-hidden="true"></div>
+										<?php endif; ?>
+									</a>
 									<div class="card__body">
-										<h3 class="card__title"><?php echo esc_html( get_the_title( $p ) ); ?></h3>
+										<h3 class="card__title"><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
 										<?php if ( is_string( $rd ) && '' !== $rd ) : ?>
 											<p class="card__meta"><?php echo esc_html( $rd ); ?></p>
 										<?php endif; ?>
 										<?php if ( '' !== $genres ) : ?>
 											<p class="card__meta card__meta--muted"><?php echo esc_html( $genres ); ?></p>
 										<?php endif; ?>
+
+										<div class="card__actions">
+											<button
+												type="button"
+												class="button button--ghost js-wishlist-toggle"
+												data-movie-id="<?php echo esc_attr( (string) $p->ID ); ?>"
+												data-in-wishlist="<?php echo $in_wl ? '1' : '0'; ?>"
+												aria-pressed="<?php echo $in_wl ? 'true' : 'false'; ?>"
+											>
+												<?php echo esc_html( $in_wl ? 'Remove from wishlist' : 'Add to wishlist' ); ?>
+											</button>
+										</div>
 									</div>
-								</a>
+								</div>
 							</li>
 						<?php endforeach; ?>
 					</ul>

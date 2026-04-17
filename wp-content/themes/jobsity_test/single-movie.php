@@ -22,6 +22,7 @@ while ( have_posts() ) :
 	$actor_ids           = get_post_meta( $movie_id, 'related_actor_ids', true );
 	$overview = get_post_meta( $movie_id, 'overview', true );
 	$body = get_the_content();
+	$in_wl = is_user_logged_in() ? jobsity_is_movie_in_wishlist( $movie_id ) : false;
 
 	if ( ! is_array( $alt_titles ) ) {
 		$alt_titles = array();
@@ -156,6 +157,18 @@ while ( have_posts() ) :
 						<img src="<?php echo esc_url( $poster ); ?>" alt="" width="400" height="600" loading="lazy">
 					</figure>
 				<?php endif; ?>
+
+				<div class="single__actions">
+					<button
+						type="button"
+						class="button button--ghost js-wishlist-toggle"
+						data-movie-id="<?php echo esc_attr( (string) $movie_id ); ?>"
+						data-in-wishlist="<?php echo $in_wl ? '1' : '0'; ?>"
+						aria-pressed="<?php echo $in_wl ? 'true' : 'false'; ?>"
+					>
+						<?php echo esc_html( $in_wl ? 'Remove from wishlist' : 'Add to wishlist' ); ?>
+					</button>
+				</div>
 
 				<dl class="meta-list">
 					<?php if ( $genres_str ) : ?>

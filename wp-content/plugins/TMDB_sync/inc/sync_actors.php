@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function ms_sync_actors() {
+	# Paged for faster testing
 	for ( $page = 1; $page <= 1; $page++ ) {
 		$data = ms_tmdb_get(
 			'person/popular',
@@ -48,6 +49,7 @@ function ms_process_actor( $tmdb_actor_id ) {
 	}
 
 	ms_sync_actor_movies( $actor_post_id, $tmdb_actor_id );
+	ms_sync_actor_gallery( $actor_post_id, $tmdb_actor_id );
 }
 
 
@@ -124,6 +126,7 @@ function ms_sync_actor_movies( $actor_post_id, $tmdb_actor_id ) {
 
 	$related_movie_ids = array();
 
+	// only 3 movies for faster testing
 	$movies = array_slice( $data['cast'], 0, 3 );
 
 foreach ( $movies as $movie_summary ) {
@@ -197,12 +200,10 @@ function ms_upsert_movie_from_actor_credit( $movie, $actor_post_id = 0 ) {
 		}
 	}
 
-	// Registra o nome do personagem desse ator nesse filme
 	if ( $actor_post_id && ! empty( $movie['character'] ) ) {
 		update_post_meta( $actor_post_id, 'character_name_' . $post_id, $movie['character'] );
 	}
 
-	// Relaciona o filme com o ator
 	if ( $actor_post_id ) {
 		$related_actor_ids = get_post_meta( $post_id, 'related_actor_ids', true );
 
@@ -216,15 +217,12 @@ function ms_upsert_movie_from_actor_credit( $movie, $actor_post_id = 0 ) {
 		}
 	}
 
-	// Registra os gêneros vindos da filmografia
 	ms_sync_movie_genres_from_summary( $post_id, $movie );
 
 	return $post_id;
 }
 
-/**
- * Cria/associa gêneros com base no array genre_ids do resumo do filme
- */
+
 function ms_sync_movie_genres_from_summary( $post_id, $movie ) {
 	if ( empty( $movie['genre_ids'] ) || ! is_array( $movie['genre_ids'] ) ) {
 		return;
@@ -283,9 +281,7 @@ function ms_sync_movie_genres_from_summary( $post_id, $movie ) {
 	}
 }
 
-/**
- * Helper para usar quando o cast do filme chamar atores
- */
+
 function ms_upsert_actor_from_cast( $cast_member, $movie_post_id = 0 ) {
 	$tmdb_id = $cast_member['id'] ?? 0;
 
@@ -354,4 +350,33 @@ function ms_upsert_actor_from_cast( $cast_member, $movie_post_id = 0 ) {
 	}
 
 	return $post_id;
+}
+
+function ms_sync_actor_gallery( $post_id, $tmdb_actor_id ) {
+	$data = ms_tmdb_get(
+		'person/' . $tmdb_actor_id . '/images',
+		array()
+	);
+
+	if ( empty( $data['profiles'] ) || ! is_array( $data['profiles'] ) ) {
+		update_post_meta( $post_id, 'gallery_urls', array() );
+		return;
+	}
+
+	$urls = array();
+
+	foreach ( $data['profiles'] as $profile ) {
+		if ( empty( $profile['file_path'] ) ) {
+			continue;
+		}
+
+		$urls[] = 'https://image.tmdb.org/t/p/w500' . $profile['file_path'];
+		// only 10 images 
+		if ( count( $urls ) >= 10 ) {
+			break;
+		}
+	}
+
+	$urls = array_values( array_unique( $urls ) );
+	update_post_meta( $post_id, 'gallery_urls', $urls );
 }

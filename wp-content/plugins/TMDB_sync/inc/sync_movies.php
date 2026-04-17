@@ -3,6 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 function ms_sync_movies() {
+	# Paged for faster testing
 	for ( $page = 1; $page <= 1; $page++ ) {
 		$data = ms_tmdb_get(
 			'movie/upcoming',
@@ -260,6 +261,7 @@ function ms_sync_movie_cast( $movie_post_id, $movie_tmdb_id ) {
 	}
 
 	$related_actor_ids = array();
+	// only 5 actors for faster testing
 	$cast = array_slice( $data['cast'], 0, 5 );
 
 	foreach ( $cast as $cast_member ) {

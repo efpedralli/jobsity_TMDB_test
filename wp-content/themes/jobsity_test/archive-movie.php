@@ -133,29 +133,45 @@ $genre_terms = get_terms(
 			<?php
 			while ( $query->have_posts() ) :
 				$query->the_post();
-				$poster = jobsity_movie_poster_url( get_the_ID() );
-				$rd     = get_post_meta( get_the_ID(), 'release_date', true );
+				$movie_id = get_the_ID();
+				$poster   = jobsity_movie_poster_url( $movie_id );
+				$rd       = get_post_meta( $movie_id, 'release_date', true );
+				$in_wl    = is_user_logged_in() ? jobsity_is_movie_in_wishlist( $movie_id ) : false;
 				?>
 				<li class="card card--movie">
-					<a class="card__link" href="<?php the_permalink(); ?>">
-						<?php if ( $poster ) : ?>
-							<img class="card__image" src="<?php echo esc_url( $poster ); ?>" alt="" loading="lazy" width="300" height="450">
-						<?php else : ?>
-							<div class="card__placeholder" aria-hidden="true"></div>
-						<?php endif; ?>
+					<div class="card__link card__link--static">
+						<a class="card__media" href="<?php the_permalink(); ?>">
+							<?php if ( $poster ) : ?>
+								<img class="card__image" src="<?php echo esc_url( $poster ); ?>" alt="" loading="lazy" width="300" height="450">
+							<?php else : ?>
+								<div class="card__placeholder" aria-hidden="true"></div>
+							<?php endif; ?>
+						</a>
 						<div class="card__body">
-							<h2 class="card__title"><?php the_title(); ?></h2>
+							<h2 class="card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							<?php if ( is_string( $rd ) && '' !== $rd ) : ?>
 								<p class="card__meta"><?php echo esc_html( $rd ); ?></p>
 							<?php endif; ?>
 							<?php
-							$g = jobsity_movie_genres_string( get_the_ID() );
+							$g = jobsity_movie_genres_string( $movie_id );
 							if ( $g ) :
 								?>
 								<p class="card__meta card__meta--muted"><?php echo esc_html( $g ); ?></p>
 							<?php endif; ?>
+
+							<div class="card__actions">
+								<button
+									type="button"
+									class="button button--ghost js-wishlist-toggle"
+									data-movie-id="<?php echo esc_attr( (string) $movie_id ); ?>"
+									data-in-wishlist="<?php echo $in_wl ? '1' : '0'; ?>"
+									aria-pressed="<?php echo $in_wl ? 'true' : 'false'; ?>"
+								>
+									<?php echo esc_html( $in_wl ? 'Remove from wishlist' : 'Add to wishlist' ); ?>
+								</button>
+							</div>
 						</div>
-					</a>
+					</div>
 				</li>
 			<?php endwhile; ?>
 		</ul>

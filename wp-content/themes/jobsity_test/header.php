@@ -17,7 +17,16 @@
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary', '' ); ?>">
 			<a href="<?php echo esc_url( get_post_type_archive_link( 'movie' ) ); ?>"><?php esc_html_e( 'Movies', '' ); ?></a>
 			<a href="<?php echo esc_url( get_post_type_archive_link( 'actor' ) ); ?>"><?php esc_html_e( 'Actors', '' ); ?></a>
+			<?php
+			$wishlist_page = get_page_by_path( 'wishlist' );
+			if ( $wishlist_page instanceof WP_Post ) :
+				?>
+				<a href="<?php echo esc_url( get_permalink( $wishlist_page ) ); ?>"><?php esc_html_e( 'Wishlist', '' ); ?></a>
+			<?php endif; ?>
 		</nav>
+		<div class="header-search">
+			<?php get_search_form(); ?>
+		</div>
 	</div>
 </header>
 
