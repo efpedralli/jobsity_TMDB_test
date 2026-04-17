@@ -7,6 +7,31 @@ Overview
 This project was developed as part of the technical assessment for a position at Jobsity.
 Below is a summary of the implementation decisions, architecture, and a few important observations found during development and testing.
 
+How to Run the Project
+Option A — Using the Database Dump (Recommended)
+
+1. Import the database dump located at database/jobsity_test.sql
+2. Configure your wp-config.php with your local database credentials.
+3. Update the site URL if necessary (via database or wp-config.php).
+4. Make sure the following are active:
+    Theme: jobsity_test
+    Plugin: TMDB_sync
+
+Option B — Fresh WordPress Installation
+1. Install a clean WordPress instance on your preferred server and database.
+2. Install and activate the following:
+    Advanced Custom Fields (ACF) plugin
+    Import the ACF field group JSON files (located in the project, if available).
+3. Upload and activate:
+    Theme: jobsity_test
+    Plugin: TMDB_sync
+4. Use the plugin dashboard to sync movies and actors from TMDB.
+
+Additional Notes
+Some features depend on external data from the TMDB API, so initial sync is required.
+Email functionality (registration/login emails) may not work in localhost environments without proper mail configuration.
+
+
 Development Approach and Technical Decisions
 Backend
 
