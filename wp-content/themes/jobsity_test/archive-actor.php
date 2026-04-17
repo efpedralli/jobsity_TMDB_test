@@ -148,7 +148,7 @@ foreach ( $movies_for_filter as $mid ) {
 		</nav>
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
-		<p class="empty-state"><?php esc_html_e( 'No actors found.', 'eduardo' ); ?></p>
+		<p class="empty-state"><?php esc_html_e( 'No actors found.', '' ); ?></p>
 	<?php endif; ?>
 </section>
 
